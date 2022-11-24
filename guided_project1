@@ -1,0 +1,216 @@
+#Please assign your personal information to variables
+my_name = "A"
+my_surname = "B"
+my_age = 26
+my_ID_number = 123456
+my_place_of_residence = "Ankara"
+health_insurance = True
+my_nationality = "Turkish"
+
+#Write a sentence using the print function to describe yourself using the variables above in the correct data type
+print(f"My name is {my_name} {my_surname}. I am {str(my_age)} years old, I live in {my_place_of_residence}." )
+
+#Create the item_list
+item_list = ['Laptop', 'Headset', 'Second monitor', 'Mousepad', 'USB drive', 'External drive']
+print(item_list)
+#Use list slicing to divide the mandatory items
+mandatory_item_list = item_list[0:3]
+#Use list slicing to divide the optional items
+optional_item_list = item_list[3:6]
+#Print both to the screen
+print(mandatory_item_list)
+print(optional_item_list)
+#Assign the spending limit value to a variable called limit
+limit = 5000
+#Create a dictionary that contains each item and its price
+price_sheet = {
+    'Laptop' : 1500,
+    'Headset' : 100,
+    'Second monitor' : 200,
+    'Mousepad' : 50,
+    'USB drive' : 70,
+    'External drive' : 250}
+#Initialize the cart list
+cart = []
+#Define the "add_to_cart" function
+def add_to_cart(item, quantity):
+  cart.append((item,quantity))
+  item_list.remove(item)
+#Define the "create_invoice" function
+def create_invoice():
+ total_amount_inc_tax = 0
+ for item,quantity in cart:
+  price = price_sheet[item]
+  tax = 0.18*price
+  total = (tax + price) * quantity
+  total_amount_inc_tax += total
+  print('Item:', item,'\t', 'Price:', price, '\t', 'Quantity:', quantity, '\t', 'Tax:', tax, '\t', 'Total:', total)
+
+ print("After the taxes are added the total amount is:",'\t', total_amount_inc_tax)
+ return total_amount_inc_tax
+ #Define the "checkout" function
+def checkout():
+  global limit
+  total_amount = create_invoice()
+  if limit ==0:
+    print("You do not have any budget")
+  elif total_amount> limit:
+    print("The total amount exceeds the budget, you have to drop some items out.")
+  else:
+    limit-= total_amount
+    print("The total amount you've paid is ", total_amount, "You have ", limit, "dollars left.")
+#Call the "add_to_cart" function for each item
+ 
+#Add first item to cart
+add_to_cart("Laptop",1)
+ 
+#Add second item to cart
+add_to_cart("Headset",8)
+ 
+#Add third item to cart
+add_to_cart("Second monitor",1)
+ 
+#Add fourth item to cart
+add_to_cart("Mousepad",1)
+ 
+#Add fifth item to cart
+add_to_cart("USB drive",2)
+ 
+#Add last item to cart
+add_to_cart("External drive",4)
+ 
+#Call the create "checkout" function to pay for all your items 
+checkout()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import random
+action_list = ['rock', 'paper', 'scissors']
+#Set the scores of players to 0
+computer_score = 0
+player_score = 0
+
+#Ask the user how many rounds they want to play
+total_rounds = input("How many rounds do you want to play? Give a number: ")
+
+#Add a round_counter that is 0 at the beginning
+round_counter = 0
+
+#Write a while loop and put the game inside
+while True:
+
+  #Increase round_counter by and print it
+  round_counter +=1
+  print("Round number: ", round_counter)
+
+
+  #Select a random action for computer
+  computer_choice = random.choice(action_list)
+
+  #Ask player to choose an action
+  player_choice = input("Pleace choose your action: ")
+
+  #Print the players choices
+  print("Computer choose: ", computer_choice, "\t", "Player choose: ", player_choice)
+  
+
+
+
+  #tie condition
+  if player_choice == computer_choice:
+    print("It is a tie.")
+  #Remaining conditions
+  elif computer_choice == "paper":
+    if player_choice == "scissors":
+      print("Player wins")
+      player_score += 1
+    else:
+      print("Computer wins")
+      computer_score +=1
+  elif computer_choice == "rock":
+    if player_choice == "scissors":
+      print("Computer wins")
+      computer_score +=1
+    else:
+      print("Player wins")
+      player_score += 1
+  else:
+    if player_choice == "rock":
+      print("Player wins")
+      player_score += 1
+    else:
+      print("Computer wins")
+      computer_score += 1
+   
+
+  #Stop the while loop if the round_counter equals the number of total rounds
+  if round_counter == int(total_rounds):
+    break
+
+
+#Print the outcome of the game by using conditional statements
+if computer_score == player_score:
+  print("No winner, it is a tie ", computer_score, ":",player_score)
+elif computer_score > player_score:
+  print("Computer wins ", computer_score, ":", player_score)
+else:
+  print("Player wins ", player_score, ":", computer_score)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #Create salesperson_revenue dictionary
+salesperson_revenue = {
+    "A" : 0,
+    "B" : 0,
+    "C" : 0,
+    "D" : 0,
+    "E" : 0
+}
+#Define enter_revenue function
+def enter_revenue(name1):
+  new_revenue = input("What is the new revenue? ")
+  for name in salesperson_revenue:
+    salesperson_revenue[name1] = int(new_revenue)
+
+#Asking user employee name as input
+while True:
+ employee_name = input("What's the name? :")
+ 
+ if employee_name == "quit":
+  break
+ else:
+  enter_revenue(employee_name)
+  #Print the salesperson_revenue dictionary
+print(salesperson_revenue)
